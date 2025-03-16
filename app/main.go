@@ -50,6 +50,10 @@ func main() {
 			fmt.Println("PLUS + null")
 		case '-':
 			fmt.Println("MINUS - null")
+		case ';':
+			fmt.Println("SEMICOLON ; null")
+		default:
+			fmt.Println("Unexpected character.")
 		}
 	}
 	

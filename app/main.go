@@ -30,12 +30,16 @@ func main() {
 		os.Exit(1)
 	}
 	contents := string(fileContents)
-	for _, current := range contents {
-		switch current {
+	for x := range contents {
+		switch contents[x] {
 		case '(':
 			fmt.Println("LEFT_PAREN ( null")
 		case ')':
 			fmt.Println("RIGHT_PAREN ) null")
+		case '{':
+			fmt.Println("LEFT_BRACE ( null")
+		case '}':
+			fmt.Println("RIGHT_BRACE ) null")
 		}
 	}
 	

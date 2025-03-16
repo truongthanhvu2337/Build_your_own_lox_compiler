@@ -49,7 +49,7 @@ func main() {
 		case '+':
 			fmt.Println("PLUS + null")
 		case '-':
-			fmt.Println("MINUS + null")
+			fmt.Println("MINUS - null")
 		}
 	}
 	

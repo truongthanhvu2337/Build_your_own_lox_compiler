@@ -48,6 +48,8 @@ func main() {
 			fmt.Println("COMMA , null")
 		case '+':
 			fmt.Println("PLUS + null")
+		case '-':
+			fmt.Println("MINUS + null")
 		}
 	}
 	

@@ -35,7 +35,9 @@ func main() {
 	contents := string(fileContents)
 	scan := scanner.NewScanner(contents)
 	tokens := scan.ScanTokens()
-	print(tokens)
+	for _, token := range tokens {
+        fmt.Printf("%s  %v\n", token.Type, token.Literal)
+    }
 
 	if errorutil.GlobalErrorHandler.HadError {
 		os.Exit(65)

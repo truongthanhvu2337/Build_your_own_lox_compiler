@@ -29,8 +29,8 @@ import (
 		return s.current >= len(s.source)
 	}
 
-	//inteface{} is similar to "Object" in Java or C#
-	func (s *Scanner) addToken(tokenType token.TokenType, literal interface{}) {
+	//inteface{}/any is similar to "Object" in Java or C#
+	func (s *Scanner) addToken(tokenType token.TokenType, literal any) {
 		// String text = source.substring(start, current);
 		// tokens.add(new Token(type, text, literal, line));
 		text := string(s.source[s.start:s.current])

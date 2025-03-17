@@ -3,7 +3,10 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/codecrafters-io/interpreter-starter-go/internal/scanner"
 )
+
 
 func main() {
 	// You can use print statements as follows for debugging, they'll be visible when running tests.
@@ -21,8 +24,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Uncomment this block to pass the first stage
-	//
+
 	filename := os.Args[2]
 	fileContents, err := os.ReadFile(filename)
 	if err != nil {
@@ -30,36 +32,10 @@ func main() {
 		os.Exit(1)
 	}
 	contents := string(fileContents)
-	for x := range contents {
-		switch contents[x] {
-		case '(':
-			fmt.Println("LEFT_PAREN ( null")
-		case ')':
-			fmt.Println("RIGHT_PAREN ) null")
-		case '{':
-			fmt.Println("LEFT_BRACE { null")
-		case '}':
-			fmt.Println("RIGHT_BRACE } null")
-		case '*':
-			fmt.Println("STAR * null")
-		case '.':
-			fmt.Println("DOT . null")
-		case ',':
-			fmt.Println("COMMA , null")
-		case '+':
-			fmt.Println("PLUS + null")
-		case '-':
-			fmt.Println("MINUS - null")
-		case ';':
-			fmt.Println("SEMICOLON ; null")
-		default:
-			fmt.Println("Unexpected character.")
-		}
+	scan := scanner.NewScanner(contents)
+	for _, token := range scan.ScanTokens() {
+		fmt.Println(token)
 	}
-	
-	// if len(fileContents) > 0 {
-	// 	panic("Scanner not implemented")
-	// } else {
-	fmt.Println("EOF  null") // Placeholder, remove this line when implementing the scanner
-	// }
+
+	fmt.Println("EOF  null")
 }

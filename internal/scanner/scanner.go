@@ -57,11 +57,11 @@ func (s *Scanner) match(expected rune) bool {
 	return true
 }
 
-func (s *Scanner) peek() rune {
-    if s.isAtEnd() {
-        return '\000' 
-    }
-    return rune(s.source[s.current])
+func (s *Scanner) peek() byte {
+	if s.isAtEnd() {
+		return '\000'
+	}
+	return s.source[s.current]
 }
 
 func (s *Scanner) ScanTokens() []token.Token {

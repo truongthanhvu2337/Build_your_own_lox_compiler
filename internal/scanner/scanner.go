@@ -27,6 +27,7 @@ func (s *Scanner) isAtEnd() bool {
 	return s.current >= len(s.source)
 }
 
+//inteface{} is similar to Object in Java or C#
 func (s *Scanner) addToken(tokenType token.TokenType, literal interface{}) {
 	// String text = source.substring(start, current);
     // tokens.add(new Token(type, text, literal, line));

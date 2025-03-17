@@ -11,7 +11,9 @@ type ErrorHandler struct {
 
 var GlobalErrorHandler = &ErrorHandler{HadError: false}
 
+//...interface{} is likely accept one or more types of arguments
 func ErrorUtil(line int, format string, args ...interface{}) {
+	//args... is used to pass a slice to a variadic function
 	message := fmt.Sprintf(format, args...)
 	report(line, "", message)
 	GlobalErrorHandler.HadError = true

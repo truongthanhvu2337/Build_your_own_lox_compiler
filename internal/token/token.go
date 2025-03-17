@@ -26,6 +26,7 @@ type Token struct {
 	Line    int
 }
 
+//similar to ToString() in Java or C#
 func (t Token) String() string {
 	literalValue := "null"
 	if t.Literal != nil {

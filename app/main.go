@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/codecrafters-io/interpreter-starter-go/internal/errorutil"
 	"github.com/codecrafters-io/interpreter-starter-go/internal/scanner"
 )
 
-var hadError = false
 
 func main() {
 	// You can use print statements as follows for debugging, they'll be visible when running tests.
@@ -38,7 +38,7 @@ func main() {
 		fmt.Println(token)
 	}
 
-	if hadError {
+	if errorutil.GlobalErrorHandler.HadError {
 		os.Exit(65)
 	}
 

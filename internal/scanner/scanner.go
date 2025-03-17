@@ -27,7 +27,7 @@ func (s *Scanner) isAtEnd() bool {
 	return s.current >= len(s.source)
 }
 
-func (s *Scanner) addToken(tokenType token.TokenType, literal any) {
+func (s *Scanner) addToken(tokenType token.TokenType, literal interface{}) {
 	// String text = source.substring(start, current);
     // tokens.add(new Token(type, text, literal, line));
 	text := s.source[s.start:s.current]

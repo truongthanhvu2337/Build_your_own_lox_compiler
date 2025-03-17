@@ -7,6 +7,7 @@ import (
 	"github.com/codecrafters-io/interpreter-starter-go/internal/scanner"
 )
 
+var hadError = false
 
 func main() {
 	// You can use print statements as follows for debugging, they'll be visible when running tests.
@@ -35,6 +36,10 @@ func main() {
 	scan := scanner.NewScanner(contents)
 	for _, token := range scan.ScanTokens() {
 		fmt.Println(token)
+	}
+
+	if hadError {
+		os.Exit(65)
 	}
 
 	fmt.Println("EOF  null")

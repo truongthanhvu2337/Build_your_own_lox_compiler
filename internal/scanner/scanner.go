@@ -1,6 +1,9 @@
 package scanner
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/codecrafters-io/interpreter-starter-go/internal/token"
 )
 	
@@ -96,6 +99,8 @@ func (s *Scanner) scanToken() {
 		s.addToken(token.SEMICOLON, nil)
 	case '*':
 		s.addToken(token.STAR, nil)
+	default:
+		fmt.Fprintf(os.Stderr, "Unexpected character '%c' on line %d\n", ch, s.line)
 	}
 }
 

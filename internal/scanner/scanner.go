@@ -1,8 +1,6 @@
 package scanner
 
 import (
-	"fmt"
-
 	"github.com/codecrafters-io/interpreter-starter-go/internal/errorutil"
 	"github.com/codecrafters-io/interpreter-starter-go/internal/token"
 )
@@ -100,7 +98,7 @@ func (s *Scanner) scanToken() {
 	case '*':
 		s.addToken(token.STAR, nil)
 	default:
-		errorutil.ErrorUtil(s.line, fmt.Sprintf("Unexpected character: %c", ch))
+		errorutil.ErrorUtil(s.line, "Unexpected character: %c", ch)
 	}
 }
 

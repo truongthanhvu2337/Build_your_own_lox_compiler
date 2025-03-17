@@ -17,14 +17,14 @@ const (
 	SLASH       TokenType = "SLASH"
 	STAR        TokenType = "STAR"
 
-	BANG_EQUAL         TokenType = "STAR"
-	EQUAL_EQUAL         TokenType = "STAR"
-	LESS_EQUAL         TokenType = "STAR"
-	GREATER_EQUAL         TokenType = "STAR"
-	BANG         TokenType = "STAR"
-	EQUAL         TokenType = "STAR"
-	LESS         TokenType = "STAR"
-	GREATER         TokenType = "STAR"
+	BANG_EQUAL         TokenType = "BANG_EQUAL"
+	EQUAL_EQUAL         TokenType = "EQUAL_EQUAL"
+	LESS_EQUAL         TokenType = "LESS_EQUAL"
+	GREATER_EQUAL         TokenType = "GREATER_EQUAL"
+	BANG         TokenType = "BANG"
+	EQUAL         TokenType = "EQUAL"
+	LESS         TokenType = "LESS"
+	GREATER         TokenType = "GREATER"
 	EOF         TokenType = "EOF"
 )
 

@@ -96,6 +96,8 @@ func (s *Scanner) scanToken() {
 		s.addToken(token.PLUS, nil)
 	case ';':
 		s.addToken(token.SEMICOLON, nil)
+	case '*':
+		s.addToken(token.STAR, nil)
 	case '!':
 		if s.match('=') {
 			s.addToken(token.BANG_EQUAL, nil)

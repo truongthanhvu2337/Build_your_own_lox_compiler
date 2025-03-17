@@ -1,5 +1,7 @@
 package token
 
+import "fmt"
+
 type TokenType string
 
 const (
@@ -22,4 +24,12 @@ type Token struct {
 	Lexeme  string
 	Literal any
 	Line    int
+}
+
+func (t Token) String() string {
+	literalValue := "null"
+	if t.Literal != nil {
+		literalValue = fmt.Sprintf("%v", t.Literal)
+	}
+	return fmt.Sprintf("%s %s %s", t.Type, t.Lexeme, literalValue)
 }

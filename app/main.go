@@ -34,11 +34,13 @@ func main() {
 	}
 	contents := string(fileContents)
 	scan := scanner.NewScanner(contents)
-	scan.ScanTokens() 
-	fmt.Println("EOF  null")
-	if errorutil.GlobalErrorHandler.HadError {
-		os.Exit(65)
+	for _, token := range scan.ScanTokens() {
+		fmt.Printf("%v  %v\n", token.Type, token.Literal)
 	}
 
-	
+	fmt.Println("EOF  null")
+
+	if errorutil.GlobalErrorHandler.HadError {
+		os.Exit(65)
+	}	
 }

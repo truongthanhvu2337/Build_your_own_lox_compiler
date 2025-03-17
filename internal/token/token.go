@@ -16,6 +16,15 @@ const (
 	SEMICOLON   TokenType = "SEMICOLON"
 	SLASH       TokenType = "SLASH"
 	STAR        TokenType = "STAR"
+
+	BANG_EQUAL         TokenType = "STAR"
+	EQUAL_EQUAL         TokenType = "STAR"
+	LESS_EQUAL         TokenType = "STAR"
+	GREATER_EQUAL         TokenType = "STAR"
+	BANG         TokenType = "STAR"
+	EQUAL         TokenType = "STAR"
+	LESS         TokenType = "STAR"
+	GREATER         TokenType = "STAR"
 	EOF         TokenType = "EOF"
 )
 

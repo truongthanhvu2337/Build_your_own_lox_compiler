@@ -27,7 +27,7 @@ func (s *Scanner) isAtEnd() bool {
 	return s.current >= len(s.source)
 }
 
-//inteface{} is similar to Object in Java or C#
+//inteface{} is similar to "Object" in Java or C#
 func (s *Scanner) addToken(tokenType token.TokenType, literal interface{}) {
 	// String text = source.substring(start, current);
     // tokens.add(new Token(type, text, literal, line));
@@ -96,8 +96,30 @@ func (s *Scanner) scanToken() {
 		s.addToken(token.PLUS, nil)
 	case ';':
 		s.addToken(token.SEMICOLON, nil)
-	case '*':
-		s.addToken(token.STAR, nil)
+	case '!':
+		if s.match('=') {
+			s.addToken(token.BANG_EQUAL, nil)
+		} else {
+			s.addToken(token.BANG, nil)
+		}
+	case '=':
+		if s.match('=') {
+			s.addToken(token.EQUAL_EQUAL, nil)
+		} else {
+			s.addToken(token.EQUAL, nil)
+		}
+	case '<':
+		if s.match('=') {
+			s.addToken(token.LESS_EQUAL, nil)
+		} else {
+			s.addToken(token.LESS, nil)
+		}
+	case '>':
+		if s.match('=') {
+			s.addToken(token.GREATER_EQUAL, nil)
+		} else {
+			s.addToken(token.GREATER, nil)
+		}
 	default:
 		errorutil.ErrorUtil(s.line, "Unexpected character: %c", ch)
 	}

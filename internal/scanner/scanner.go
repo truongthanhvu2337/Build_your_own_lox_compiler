@@ -130,7 +130,7 @@ import (
 		}
 
 		value, _ := strconv.ParseFloat(string(s.source[s.start:s.current]), 64)
-		s.addToken(token.NUMBER, value)
+		s.addToken(token.NUMBER, float64(value))
 	}
 
 

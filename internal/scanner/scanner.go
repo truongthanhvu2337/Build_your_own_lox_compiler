@@ -63,6 +63,13 @@ import (
 		}
 		return s.source[s.current]
 	}
+
+	func (s *Scanner) peekNext() rune {
+		if s.current+1 >= len(s.source) {
+			return '\000'
+		}
+		return s.source[s.current+1]
+	}
 	
 
 	func (s *Scanner) ScanTokens() []token.Token {
@@ -81,6 +88,7 @@ import (
 		return s.tokens
 	}
 
+	//string literal
 	func (s *Scanner) string() {
 		for s.peek() != '"' && !s.isAtEnd() {
 			if s.peek() == '\n' {
@@ -99,6 +107,31 @@ import (
 		value := string(s.source[s.start+1:s.current-1])
 		s.addToken(token.STRING, value)
 	}
+
+	//number literal
+	func (s *Scanner) isDigit(c rune) bool {
+		return c >= '0' && c <= '9'
+	}
+
+	func (s *Scanner) number() {
+		for s.isDigit(s.peek()) {
+			s.advance()
+		}
+
+		// Look for a fractional part.
+		if s.peek() == '.' && s.isDigit(s.peekNext()) {
+			s.advance()
+
+			for s.isDigit(s.peek()) {
+				s.advance()
+			}
+		}
+
+		s.addToken(token.NUMBER, string(s.source[s.start:s.current]))
+	}
+
+
+
 
 	//Recongnize lexemes
 	func (s *Scanner) scanToken() {
@@ -165,7 +198,11 @@ import (
 			
 
 		default:
-			errorutil.ErrorUtil(s.line, "Unexpected character: %c", ch)
+			if s.isDigit(ch) {
+				s.number()
+			} else {
+				errorutil.ErrorUtil(s.line, "Unexpected character: %c", ch)
+			}
 		}
 	}
 

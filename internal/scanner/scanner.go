@@ -1,6 +1,8 @@
 package scanner
 
 import (
+	"strconv"
+
 	"github.com/codecrafters-io/interpreter-starter-go/internal/errorutil"
 	"github.com/codecrafters-io/interpreter-starter-go/internal/token"
 )
@@ -127,7 +129,8 @@ import (
 			}
 		}
 
-		s.addToken(token.NUMBER, string(s.source[s.start:s.current]))
+		value, _ := strconv.ParseFloat(string(s.source[s.start:s.current]), 64)
+		s.addToken(token.NUMBER, value)
 	}
 
 

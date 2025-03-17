@@ -36,7 +36,12 @@ func main() {
 	scan := scanner.NewScanner(contents)
 	tokens := scan.ScanTokens()
 	for _, token := range tokens {
-        fmt.Printf("%s  %v\n", token.Type, token.Literal)
+        literal := token.Literal
+        if literal == nil {
+            fmt.Printf("%s  null\n", token.Type)
+        } else {
+            fmt.Printf("%s  %v\n", token.Type, literal)
+        }
     }
 
 	if errorutil.GlobalErrorHandler.HadError {

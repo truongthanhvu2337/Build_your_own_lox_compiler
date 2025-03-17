@@ -57,6 +57,13 @@ func (s *Scanner) match(expected rune) bool {
 	return true
 }
 
+func (s *Scanner) peek() rune {
+    if s.isAtEnd() {
+        return '\000' 
+    }
+    return rune(s.source[s.current])
+}
+
 func (s *Scanner) ScanTokens() []token.Token {
     for !s.isAtEnd() {
         s.start = s.current
@@ -122,6 +129,19 @@ func (s *Scanner) scanToken() {
 		} else {
 			s.addToken(token.GREATER, nil)
 		}
+	case '/':
+		if s.match('/') { 
+			for s.peek() != '\n' && !s.isAtEnd() {
+				s.advance() 
+			}
+		} else {
+			s.addToken(token.SLASH, nil) 
+		}
+	case ' ', '\r', '\t':
+		break
+	case '\n':
+		s.line++
+
 	default:
 		errorutil.ErrorUtil(s.line, "Unexpected character: %c", ch)
 	}

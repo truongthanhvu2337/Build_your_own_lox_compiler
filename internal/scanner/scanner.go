@@ -81,6 +81,24 @@ import (
 		return s.tokens
 	}
 
+	func (s *Scanner) string() {
+		for s.peek() != '"' && !s.isAtEnd() {
+			if s.peek() == '\n' {
+				s.line++
+			}
+			s.advance()
+		}
+
+		if s.isAtEnd() {
+			errorutil.ErrorUtil(s.line, "Unterminated string.")
+			return
+		}
+
+		s.advance()
+
+		value := string(s.source[s.start+1:s.current-1])
+		s.addToken(token.STRING, value)
+	}
 
 	//Recongnize lexemes
 	func (s *Scanner) scanToken() {
@@ -142,6 +160,9 @@ import (
 			break
 		case '\n':
 			s.line++
+		case '"':
+			s.string()
+			
 
 		default:
 			errorutil.ErrorUtil(s.line, "Unexpected character: %c", ch)

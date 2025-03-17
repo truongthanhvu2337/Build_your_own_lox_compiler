@@ -25,6 +25,11 @@ const (
 	EQUAL         TokenType = "EQUAL"
 	LESS         TokenType = "LESS"
 	GREATER         TokenType = "GREATER"
+
+	IDENTIFIER TokenType = "IDENTIFIER"
+	STRING     TokenType = "STRING"
+	NUMBER     TokenType = "NUMBER"
+
 	EOF         TokenType = "EOF"
 )
 

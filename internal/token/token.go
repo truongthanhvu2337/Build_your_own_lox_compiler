@@ -46,7 +46,7 @@ func (t Token) String() string {
 	if t.Literal != nil {
 		switch value := t.Literal.(type) {
 			case float64:
-				literalValue = fmt.Sprintf("%f", value)
+				literalValue = fmt.Sprintf("%g", value)
 			default:
 				literalValue = fmt.Sprintf("%v", t.Literal)
 		}

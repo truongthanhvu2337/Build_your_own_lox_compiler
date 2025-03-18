@@ -150,9 +150,12 @@ import (
 			s.advance()
 		}
 
-		// text := string(s.source[s.start:s.current])
-		// tokenType := token.Keywords[text]
-		s.addToken(token.IDENTIFIER, nil)
+		text := string(s.source[s.start:s.current])
+		tokenType, exists := token.Keywords[text]
+		if exists {
+			tokenType = token.IDENTIFIER
+		}
+		s.addToken(tokenType, nil)
 	}
 
 

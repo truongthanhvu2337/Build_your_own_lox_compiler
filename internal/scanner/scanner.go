@@ -150,9 +150,9 @@ import (
 			s.advance()
 		}
 
-		text := string(s.source[s.start:s.current])
-		tokenType := token.Keywords[text]
-		s.addToken(tokenType, nil)
+		// text := string(s.source[s.start:s.current])
+		// tokenType := token.Keywords[text]
+		s.addToken(token.IDENTIFIER, nil)
 	}
 
 

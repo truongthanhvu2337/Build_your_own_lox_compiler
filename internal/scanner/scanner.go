@@ -134,6 +134,26 @@ import (
 	}
 
 
+	//indentifier
+	func (s *Scanner) isAlpha(c rune) bool {
+		return (c >= 'a' && c <= 'z') ||
+			(c >= 'A' && c <= 'Z') ||
+			c == '_'
+	}
+
+	func (s *Scanner) isAlphaNumeric(c rune) bool {
+		return s.isAlpha(c) || s.isDigit(c)
+	}
+
+	func (s *Scanner) identifier() {
+		for s.isAlphaNumeric(s.peek()) {
+			s.advance()
+		}
+
+		text := string(s.source[s.start:s.current])
+		tokenType := token.Keywords[text]
+		s.addToken(tokenType, nil)
+	}
 
 
 	//Recongnize lexemes
@@ -203,6 +223,8 @@ import (
 		default:
 			if s.isDigit(ch) {
 				s.number()
+			} else if s.isAlpha(ch) {
+				s.identifier()
 			} else {
 				errorutil.ErrorUtil(s.line, "Unexpected character: %c", ch)
 			}
